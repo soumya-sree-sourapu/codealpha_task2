@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - CodeAlpha Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+</head>
+<body>
+    <!-- Simple Navbar -->
+    <header>
+        <div class="logo-bar">
+            <p>Quick Pick Products</p>
+            <div class="logo"></div>
+        </div>
+    </header>
+
+    <div class="products-container">
+        <h2 id="category-title">Our Collection</h2>
+        
+        <div class="products-grid" id="products-grid">
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('cat');
+
+        const productsData = {
+            summer: [
+                { name: "Summer Cotton Dress", price: "₹999", img: "summer.jpg" },
+                { name: "Cool T-Shirt", price: "₹499", img: "hero.avif" }
+            ],
+            winter: [
+                { name: "Warm Jacket", price: "₹1,999", img: "winter.jpg" },
+                { name: "Stylish Sweater", price: "₹1,299", img: "hero2.jpg" }
+            ],
+            kids: [
+                { name: "Kids Frock", price: "₹699", img: "kids.jpg" },
+                { name: "Cute Outfit", price: "₹799", img: "hero3.jpg" }
+            ],
+            sarees: [
+                { name: "Traditional Pattu Saree", price: "₹3,499", img: "sarees.jpg" },
+                { name: "Designer Saree", price: "₹2,199", img: "logo4.jpeg" }
+            ]
+        };
+
+        const titleElement = document.getElementById('category-title');
+        const gridElement = document.getElementById('products-grid');
+
+        if (category && productsData[category]) {
+            titleElement.innerText = category.toUpperCase() + " COLLECTION";
+
+            productsData[category].forEach(prod => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${prod.img}" alt="${prod.name}">
+                    <h3>${prod.name}</h3>
+                    <p>${prod.price}</p>
+                    <button class="buy-btn" onclick="addToCart('${prod.name}', '${prod.price}', '${prod.img}')">Add to Cart</button>
+                `;
+                gridElement.appendChild(card);
+            });
+        } else {
+            titleElement.innerText = "ALL PRODUCTS";
+        }
+        function addToCart(name, price, img) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({name, price, img});
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            if(confirm(`${name} added to cart! Do you wanna go to cart page?`)){
+                window.location.href='cart.html';
+            }
+        }
+    </script>
+</body>
+</html>

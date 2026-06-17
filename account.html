@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .account-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 300px;
+            padding: 30px;
+            background: #FBF5DD;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .account-container h2 { margin-bottom: 20px; color: #333; }
+        .details { text-align: left; margin-bottom: 20px; font-size: 18px; }
+        .details p { margin: 10px 0; }
+        .logout-btn {
+            background: #0D530E; color: white; border: none;
+            padding: 10px 20px; cursor: pointer; border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="account-container">
+        <h2>Account Details 👤</h2>
+        <div class="details">
+            <p><strong>Username:</strong> <span id="acc-name">Loading...</span></p>
+            <p><strong>Email:</strong> <span id="acc-email">Loading...</span></p>
+        </div>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+        <br><br>
+        <a href="index.html" style="color: #007bff; text-decoration: none;">← Back to Home</a>
+    </div>
+
+    <script>
+        // పేజీ ఓపెన్ అవ్వగానే LocalStorage నుండి డేటా తెచ్చి చూపించడం
+        window.onload = function() {
+            const username = localStorage.getItem('username');
+            const email = localStorage.getItem('email');
+
+            if (username && email) {
+                document.getElementById('acc-name').innerText = username;
+                document.getElementById('acc-email').innerText = email;
+            } else {
+                alert('Please sign in first!');
+                window.location.href = 'signin.html';
+            }
+        };
+
+        // లాగౌట్ ఫంక్షన్
+        function logout() {
+            localStorage.clear(); // డేటా క్లియర్ చేయడం
+            alert('Logged out successfully!');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

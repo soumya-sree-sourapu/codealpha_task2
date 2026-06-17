@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeAlpha Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+     <header>
+        <!-- logo bar -->
+        <div class="logo-bar">
+            <p>Quick Pick</p>
+            <div class="logo"></div>
+        </div>
+        <!-- nav bar -->
+        <div class="navbar">
+           <!-- menu -->
+            <div class="nav-menu">
+                <div class="menu"><i class="fa-solid fa-bars" onclick="alert('Menu opened!')" style="cursor: pointer;"></i> </div>
+            </div>    
+            <!-- search -->
+            <div class="nav-search">
+                <!-- search bar -->
+                <div class="searchbar">                
+                   <input type="searchbar" placeholder="Search here" class="search-bar">
+                </div>
+                <!-- search button -->
+                <div class="searchbutton">
+                        <i class="fa-solid fa-magnifying-glass" onclick="alert('Searching for products...')" style="cursor: pointer;"></i> 
+                </div>
+            </div>
+            <!-- categories -->
+             <div class="nav-cat">
+                <select name="Categories" class="cat" onchange="if(this.value) window.location.href=this.value;">
+                    <option value="all">All Categories</option> 
+                    <option value="products.html?cat=summer">Summer Collection</option> 
+                    <option value="products.html?cat=winter">Winter Collection</option>
+                    <option value="products.html?cat=kids">Kids Collection</option>
+                    <option value="products.html?cat=sarees">Sarees Collection</option>
+                    <option value="products.html?cat=summer">Summer Collection</option>
+                    <option value="products.html?cat=winter">Winter Collection</option>
+                    <option value="products.html?cat=kids">Kids Collection</option>
+                    <option value="products.html?cat=sarees">Sarees Collection</option>
+                </select>
+             </div>
+
+            <!-- wishlist -->
+             <div class="nav-wish">
+                <div class="wish"><i class="fa-regular fa-heart" onclick="alert('wishlist feature is coming soon!')" style="cursor: pointer;"></i></div>
+             </div>
+             <!-- cart -->
+             <div class="nav-cart">
+                <div class="cart"><i class="fa-solid fa-cart-shopping" onclick="window.location.href='cart.html'" style="cursor: pointer;"></i></div>
+             </div>
+             <!-- account -->
+              <div class="nav-ac">
+                <div class="ac"><i class="fa-regular fa-user" onclick="window.location.href='account.html'" style="cursor: pointer;"></i></div>
+              </div>
+            
+
+        </div>
+        
+    </header>
+    <div class="hero"></div>
+    
+    <div class="cards1">
+    <div class="d1" onclick="window.location.href='products.html?cat=summer'">
+        <div class="h">
+        <p class="h1">Summer Collection</p>
+        <div class="icon"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+    <div class="d2" onclick="window.location.href='products.html?cat=winter'">
+        <div class="h">
+        <p class="h1">Winter Collection</p>
+        <div class="icon"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+    <div class="d3" onclick="window.location.href='products.html?cat=kids'">
+        <div class="h">
+        <p class="h1">Kids Collection</p>
+        <div class="icon"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+    <div class="d4" onclick="window.location.href='products.html?cat=sarees'">
+        <div class="h">
+        <p class="h1">Sarees Collection</p>
+        <div class="icon"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+    </div>
+
+    <div class="cards2">
+    <div class="d5" onclick="window.location.href='products.html?cat=summer'">
+        <div class="h">
+        <p class="h1">Summer Collection</p>
+        <div class="icon"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+    <div class="d6" onclick="window.location.href='products.html?cat=winter'">
+        <div class="h">
+        <p class="h1">Winter Collection</p>
+        <div class="icon"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+    <div class="d7" onclick="window.location.href='products.html?cat=kids'">
+        <div class="h">
+        <p class="h1">Kids Collection</p>
+        <div class="icon"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+    <div class="d8" onclick="window.location.href='products.html?cat=sarees'">
+        <div class="h">
+        <p class="h1">Sarees Collection</p>
+        <div class="icon"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+    </div>
+
+
+    <footer>
+        <div class="back-bar">
+            <div class="txt">
+                <h1>See personalized recommandations</h1>
+            </div>    
+            <button class="btn" onclick="window.location.href='signin.html'">Sign in</button>
+            <p class="line">New customer? <a href="signup.html">Start here!</a></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart - CodeAlpha Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-bar">
+            <p>Your Shopping Cart</p>
+            <button class="buy-btn" onclick="window.location.href='index.html'">Back to Store</button>
+        </div>
+    </header>
+
+    <div class="products-container">
+        <h2>Items in your Cart</h2>
+        <div id="cart-items-list" class="products-grid">
+            <!-- కార్ట్ ఐటమ్స్ ఇక్కడ కనిపిస్తాయి -->
+        </div>
+        
+        <div class="cart-summary" style="text-align: center; margin-top: 2rem;">
+            <h3>Total Amount: <span id="total-price">₹0</span></h3>
+            <button class="auth-btn" style="max-width: 200px; margin: 1rem auto;" onclick="alert('Order Placed Successfully! 🎉')">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const listElement = document.getElementById('cart-items-list');
+            const totalElement = document.getElementById('total-price');
+            
+            listElement.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                listElement.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">Your cart is empty, Honey!</p>';
+                totalElement.innerText = '₹0';
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                // ప్రైస్ లోని కరెన్సీ సింబల్ తీసేసి నెంబర్ లా మార్చడం
+                const priceNum = parseInt(item.price.replace(/[^0-9]/g, ''));
+                total += priceNum;
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>${item.price}</p>
+                    <button class="buy-btn" style="background-color: #ff4d4d;" onclick="removeFromCart(${index})">Remove</button>
+                `;
+                listElement.appendChild(card);
+            });
+
+            totalElement.innerText = '₹' + total.toLocaleString('en-IN');
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        // పేజీ లోడ్ అవ్వగానే కార్ట్ చూపించు
+        displayCart();
+    </script>
+</body>
+</html>
